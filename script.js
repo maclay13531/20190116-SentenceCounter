@@ -1,12 +1,20 @@
 $(document).ready(function () {
     $("#textarea-submit").submit(function (e) {
         e.preventDefault();
-        $("#result-panel").empty();
+        $("#letter-count-bar-chart").empty();
+
         var userSubmitedContent = $("#textarea-submit textarea").val().toUpperCase();
-        const data = [];
+
+        const barChartData = [];
+        const pieChartData = [];
+
         var letterCountDict = {
             "non-alphabet": 0
         };
+        var vowelAndConsonentDict = {
+            "Vowel": 0,
+            "Non-Vowel": 0
+        }
 
         for (let i = 0; i < userSubmitedContent.length; i++) {
             if (userSubmitedContent[i].match(/[a-z]/i)) {
@@ -24,26 +32,39 @@ $(document).ready(function () {
             var eachObject = {};
             eachObject.letter = key;
             eachObject.count = letterCountDict[key];
-            data.push(eachObject);
+            barChartData.push(eachObject);
         }
 
-        console.log(data);
+        for (let j = 0; j < userSubmitedContent.length; j++) {
+            if (userSubmitedContent[j].match(/^[aeiou]$/i)) {
+                vowelAndConsonentDict["Vowel"]++;
+            } else {
+                vowelAndConsonentDict["Non-Vowel"]++;
+            }
+        }
 
-        horizontalBar(data);
+        for (var key in vowelAndConsonentDict) {
+            var eachObject = {};
+            eachObject.type = key;
+            eachObject.count = vowelAndConsonentDict[key];
+            pieChartData.push(eachObject);
+        }
+
+        console.log(vowelAndConsonentDict);
+        console.log(barChartData);
+
+        horizontalBarChart(barChartData);
+        donutChart(pieChartData);
     });
 
-    function horizontalBar(data) {
+    function horizontalBarChart(data) {
         var margin = {
             left: 20,
             right: 20,
             top: 20,
             bottom: 20
         };
-    
-        var barSize = {
-            height: 20
-        }
-    
+
         var width = 400 - margin.left - margin.right;
         var height = 400 - margin.top - margin.bottom;
 
@@ -54,7 +75,7 @@ $(document).ready(function () {
             .range([height, 0])
             .padding(0.1);
 
-        var svg = d3.select("#result-panel").append("svg")
+        var svg = d3.select("#letter-count-bar-chart").append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -71,7 +92,7 @@ $(document).ready(function () {
             .append("text")
             .text(function (d) { return d.count; })
             .attr("x", function (d) { return x(d.count) + 10; })
-            .attr("y", function (d, i) { return height - (( height / data.length ) * (1 / 3)) - (( height / data.length ) * i ); });
+            .attr("y", function (d, i) { return height - ((height / data.length) * (1 / 3)) - ((height / data.length) * i); });
 
         svg.selectAll(".bar")
             .data(data)
@@ -88,5 +109,67 @@ $(document).ready(function () {
 
         svg.append("g")
             .call(d3.axisLeft(y));
+    }
+
+    function donutChart(data) {
+        var width = 400;
+        var height = 400;
+        var radius = Math.min(width, height) / 2;
+        var donutWidth = 70;
+        var legendRectSize = 20;
+        var legendSpacing = 10;
+
+        var color = d3.scaleOrdinal()
+            .range(["#173753", "#6daedb"]);
+
+        var svg = d3.select("#letter-count-donut-chart")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
+
+        var arc = d3.arc()
+            // .innerRadius(0)
+            .innerRadius(radius - donutWidth)
+            .outerRadius(radius);
+
+        var pie = d3.pie()
+            .value(function (d) { return d.count; })
+            .sort(null);
+
+        var path = svg.selectAll("path")
+            .data(pie(data))
+            .enter()
+            .append("path")
+            .attr("d", arc)
+            .attr("fill", function (d, i) {
+                return color(d.data.type);
+            });
+
+        var legend = svg.selectAll(".legend")
+            .data(color.domain())
+            .enter()
+            .append("g")
+            .attr("class", "legend")
+            .attr('transform', function (d, i) {
+                var height = legendRectSize + legendSpacing;
+                var offset = height * color.domain().length / 2;
+                var horz = -2 * legendRectSize;
+                var vert = i * height - offset;
+                return 'translate(' + horz + ',' + vert + ')';
+            });
+
+        legend.append("rect")
+            .attr("width", legendRectSize)
+            .attr("height", legendRectSize)
+            .style("fill", color)
+            .style("stroke", color);
+
+        legend.append('text')
+            .style("stroke", color)
+            .attr("x", (legendRectSize + legendSpacing) * 3)
+            .attr("y", legendRectSize - legendSpacing + 2)
+            .text(function (d) { return d.toUpperCase(); });
     }
 });

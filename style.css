@@ -3,11 +3,11 @@
 }
 
 .bar { 
-    fill: #C08552; 
+    fill: #3e546d; 
 }
 
 body text {
-    fill: #5E3023;
+    fill: steelblue;
     font: 10px sans-serif;
     text-anchor: end;
 }
