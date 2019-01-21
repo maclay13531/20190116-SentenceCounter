@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    $(".clear-text-button").click(function () {
+        $(".text-area").val("");
+    })
+
     $("#textarea-submit").submit(function (e) {
         e.preventDefault();
         $("#letter-count-bar-chart").empty();

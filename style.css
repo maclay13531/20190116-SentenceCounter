@@ -1,9 +1,6 @@
 /* main div */
 .main-div {
-    background-image: linear-gradient(to right, #f1f1f1, #d7d7d7);
-    width: 80%;
-    margin-right: auto;
-    margin-left: auto;
+    background-image: linear-gradient(to right, #4A6985, #d7d7d7);
     margin-top: 50px;
 }
 
@@ -31,6 +28,22 @@
 ::placeholder {
     color:#4A6985;
 }
+
+.clear-text-button {
+    background-color: #4A6985;
+    padding: 10px;
+    border: 1px solid white;
+    color: white;
+    float: right;
+}
+
+    .clear-text-button:hover {
+        background-color: #3e546d;
+        padding: 10px;
+        border: 1px solid #3e546d;
+        color: white;
+        cursor: pointer;
+    }
 
 .submit-button {
     background-color: #4A6985;
