@@ -1,5 +1,63 @@
+/* main div */
+.main-div {
+    background-image: linear-gradient(to right, #f1f1f1, #d7d7d7);
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+}
+
+/* user text div */
+.user-text-typing-div {
+    background-color: white;
+    margin-top: 50px;
+    color: #4A6985;
+    padding: 20px;
+    border: 1px solid white;
+    box-shadow: 10px 10px 5px 0px #696969;
+}
+
+.user-text-typing-label {
+    text-align: center;
+    padding: 10px;
+}
+
 .text-area {
     width: 100%;
+    background-color: white;
+    color: #4A6985;
+}
+
+::placeholder {
+    color:#4A6985;
+}
+
+.submit-button {
+    background-color: #4A6985;
+    padding: 10px;
+    border: 1px solid white;
+    color: white;
+    float: right;
+}
+
+    .submit-button:hover {
+        background-color: #3e546d;
+        padding: 10px;
+        border: 1px solid #3e546d;
+        color: white;
+        cursor: pointer;
+    }
+
+/* charts div */
+.bar-chart-div, .pie-chart-div {
+    margin-bottom: 50px;
+    background-color: white;
+    height: 500px;
+    margin-top: 30px;
+    color: #4A6985;
+    padding: 20px;
+    border: 1px solid white;
+    box-shadow: 10px 10px 5px 0px #696969;
 }
 
 .bar { 

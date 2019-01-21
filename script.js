@@ -2,6 +2,7 @@ $(document).ready(function () {
     $("#textarea-submit").submit(function (e) {
         e.preventDefault();
         $("#letter-count-bar-chart").empty();
+        $("#letter-count-donut-chart").empty();
 
         var userSubmitedContent = $("#textarea-submit textarea").val().toUpperCase();
 
@@ -11,7 +12,7 @@ $(document).ready(function () {
         var letterCountDict = {
             "non-alphabet": 0
         };
-        var vowelAndConsonentDict = {
+        var vowelAndConsonentDict = {   
             "Vowel": 0,
             "Non-Vowel": 0
         }

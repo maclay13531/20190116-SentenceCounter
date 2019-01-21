@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 
     <!-- script -->
@@ -21,19 +21,27 @@
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-md-12">
-            <h5>Please write to your desire!</h1>
+    <div class="main-div">
+        <div class="row" style="width: 80%; margin-left: auto; margin-right: auto;">
+            <div class="col-md-12 user-text-typing-div">
                 <form id="textarea-submit">
-                    <textarea class="text-area" placeholder="Please limit the letter count to 100 or less." maxlength="100"></textarea>
-                    <input type="submit">
+                    <div class="col-md-12">
+                        <h5 class="user-text-typing-label">Write to your desire!</h5>
+                    </div>
+                    <div class="col-md-12">
+                        <textarea class="text-area" placeholder="Please limit the letter count to 100 or less." maxlength="100"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="submit-button">Count</button>
+                    </div>
                 </form>
-        </div>
-        <div class="col-md-6">
-            <div id="letter-count-bar-chart"></div>
-        </div>
-        <div class="col-md-6">
-            <div id="letter-count-donut-chart"></div>
+            </div>
+            <div class="col-md-6 bar-chart-div">
+                <div id="letter-count-bar-chart"></div>
+            </div>
+            <div class="offset-md-1 col-md-5 pie-chart-div">
+                <div id="letter-count-donut-chart"></div>
+            </div>
         </div>
     </div>
 </body>
