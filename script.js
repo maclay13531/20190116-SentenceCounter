@@ -70,8 +70,8 @@ $(document).ready(function () {
             bottom: 20
         };
 
-        var width = 400 - margin.left - margin.right;
-        var height = 400 - margin.top - margin.bottom;
+        var width = 300 - margin.left - margin.right;
+        var height = 300 - margin.top - margin.bottom;
 
         var x = d3.scaleLinear()
             .range([0, width]);
@@ -117,8 +117,8 @@ $(document).ready(function () {
     }
 
     function donutChart(data) {
-        var width = 400;
-        var height = 400;
+        var width = 300;
+        var height = 300;
         var radius = Math.min(width, height) / 2;
         var donutWidth = 70;
         var legendRectSize = 20;

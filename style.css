@@ -1,7 +1,24 @@
 /* main div */
 .main-div {
     background-image: linear-gradient(to right, #4A6985, #d7d7d7);
-    margin-top: 50px;
+}
+
+@media only screen and (min-width : 480px) {
+    .main-div {
+        height: auto;
+    }
+}
+
+@media only screen and (min-width : 600px) {
+    .main-div {
+        height: 100vh;
+    }
+}
+
+@media only screen and (min-width : 1200px) {
+    .main-div {
+        height: 100vh;
+    }
 }
 
 /* user text div */
