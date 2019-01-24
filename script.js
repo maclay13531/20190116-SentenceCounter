@@ -71,7 +71,7 @@ $(document).ready(function () {
         };
 
         var width = 300 - margin.left - margin.right;
-        var height = 300 - margin.top - margin.bottom;
+        var height = 420 - margin.top - margin.bottom;
 
         var x = d3.scaleLinear()
             .range([0, width]);
@@ -117,10 +117,10 @@ $(document).ready(function () {
     }
 
     function donutChart(data) {
-        var width = 300;
-        var height = 300;
+        var width = 250;
+        var height = 250;
         var radius = Math.min(width, height) / 2;
-        var donutWidth = 70;
+        var donutWidth = 50;
         var legendRectSize = 20;
         var legendSpacing = 10;
 
@@ -129,10 +129,10 @@ $(document).ready(function () {
 
         var svg = d3.select("#letter-count-donut-chart")
             .append("svg")
-            .attr("width", width)
-            .attr("height", height)
+            .attr("width", width )
+            .attr("height", height + 150)
             .append("g")
-            .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
+            .attr("transform", "translate(" + (width / 2) + "," + (height) + ")");
 
         var arc = d3.arc()
             // .innerRadius(0)
