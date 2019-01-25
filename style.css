@@ -90,6 +90,10 @@
     box-shadow: 10px 10px 5px 0px #696969;
 }
 
+.bar-chart-label, .pie-chart-label{
+    border-bottom: 1px solid #4A6985;
+}
+
 .bar { 
     fill: #3e546d; 
 }

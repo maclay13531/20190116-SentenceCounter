@@ -7,6 +7,8 @@ $(document).ready(function () {
         e.preventDefault();
         $("#letter-count-bar-chart").empty();
         $("#letter-count-donut-chart").empty();
+        $(".bar-chart-image").attr("hidden", true);
+        $(".pie-chart-image").attr("hidden", true);
 
         var userSubmitedContent = $("#textarea-submit textarea").val().toUpperCase();
 
