@@ -1,6 +1,7 @@
 /* main div */
 .main-div {
     background-image: linear-gradient(to right, #4A6985, #d7d7d7);
+    font-family: "Luckiest Guy", cursive;
 }
 
 @media only screen and (min-width : 480px) {
